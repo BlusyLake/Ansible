@@ -1,6 +1,20 @@
-- name: Atualizar containers Docker
-  hosts: servidores_docker
+---
+- name: Atualizar imagens Docker com tag latest (exceto bancos)
+  hosts: all
   become: true
 
-  roles:
-    - docker_update
+  tasks:
+    - name: Copiar script para o servidor
+      copy:
+        src: ../scripts/atualiza_imagens_latest.sh
+        dest: /tmp/atualiza_imagens_latest.sh
+        mode: '0755'
+
+    - name: Instalar jq (pré-requisito)
+      apt:
+        name: jq
+        state: present
+        update_cache: yes
+
+    - name: Executar script de atualização
+      shell: /tmp/atualiza_imagens_latest.sh
