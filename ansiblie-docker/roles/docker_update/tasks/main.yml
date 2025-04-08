@@ -1,0 +1,5 @@
+- name: Atualizar imagem Docker
+  shell: docker pull minha-imagem:latest
+
+- name: Reiniciar container
+  shell: docker restart meu-container

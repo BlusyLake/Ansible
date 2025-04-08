@@ -1,0 +1,6 @@
+- name: Atualizar containers Docker
+  hosts: servidores_docker
+  become: true
+
+  roles:
+    - docker_update

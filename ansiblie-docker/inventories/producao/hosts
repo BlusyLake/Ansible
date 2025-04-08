@@ -1,0 +1,4 @@
+[servidores_docker]
+# Exemplo de IPs
+192.168.10.10 ansible_user=root
+192.168.10.11 ansible_user=root
